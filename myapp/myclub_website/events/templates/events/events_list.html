@@ -4,4 +4,36 @@
 
     <h1>Events List</h1>
 
+    {% for event in event_list %}
+
+        <div class="card">
+          <h5 class="card-header">{{ event }}</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{ event.venue }}</h5>
+            <p class="card-text">
+
+                 <ul>
+                    <li>Date: {{ event.event_date }}</li>
+                    <li>Venue Address: {{ event.venue.address }}</li>
+                    <li>Venue zip code: {{ event.venue.zip_code }}</li>
+                    <li>Venue Phone: {{ event.venue.phone }}</li>
+                    <li>Venue Website: {{ event.venue.web }}</li>
+                    <li>Venue Email addres: {{ event.venue.email_address }}</li>
+                    <li>Manager: {{ event.manager }}</li>
+                    <li>Description: {{ event.description }}</li>
+                    <li>Atendees: </li>
+                        <ul>
+                        {% for attendee in event.attendees.all %}
+                            <li>{{attendee}}</li>
+                        {% endfor %}
+                </ul>
+        </ul>
+
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+ 
+    {% endfor %}
+
 {% endblock %}
